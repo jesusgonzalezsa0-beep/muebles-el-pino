@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Muebles El Pino | Catálogo</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f1eb;
+            color: #2c2119;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #21150e;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,.25);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #d6a25b;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #d6a25b;
+        }
+
+
+        /* =========================
+           PORTADA
+        ========================= */
+
+        .hero {
+            min-height: 650px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 80px 8%;
+
+            background:
+                linear-gradient(
+                    rgba(20,12,7,.65),
+                    rgba(20,12,7,.65)
+                ),
+                url("https://images.unsplash.com/photo-1555041469-a586c61ea9bc")
+                center / cover;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            color: white;
+        }
+
+        .hero-content span {
+            color: #d6a25b;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            margin: 15px 0;
+        }
+
+        .hero p {
+            font-size: 21px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            background: #c7934f;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #a87537;
+        }
+
+
+        /* =========================
+           SECCIONES
+        ========================= */
+
+        section {
+            padding: 75px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #756a60;
+            margin-bottom: 40px;
+        }
+
+
+        /* =========================
+           CATEGORÍAS
+        ========================= */
+
+        .categorias {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .categoria {
+            border: 1px solid #c7b8a8;
+            background: white;
+            padding: 11px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .categoria:hover,
+        .categoria.activa {
+            background: #2b1e15;
+            color: white;
+        }
+
+
+        /* =========================
+           BUSCADOR
+        ========================= */
+
+        .buscador {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .buscador input {
+            width: 100%;
+            padding: 17px 20px;
+            border-radius: 30px;
+            border: 1px solid #c9bbaa;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .buscador input:focus {
+            border-color: #b78344;
+        }
+
+
+        /* =========================
+           PRODUCTOS
+        ========================= */
+
+        .productos {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(270px, 1fr));
+
+            gap: 28px;
+        }
+
+        .producto {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.10);
+
+            transition: .3s;
+        }
+
+        .producto:hover {
+            transform: translateY(-7px);
+        }
+
+        .producto-img {
+            height: 230px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .producto-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .4s;
+        }
+
+        .producto:hover img {
+            transform: scale(1.05);
+        }
+
+        .oferta {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+
+            background: #b23b2d;
+            color: white;
+
+            padding: 7px 12px;
+            border-radius: 20px;
+
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .producto-info {
+            padding: 22px;
+        }
+
+        .producto-info h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .categoria-texto {
+            color: #9a6d3d;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .estrellas {
+            color: #e0a12c;
+            margin: 10px 0;
+        }
+
+        .precio {
+            font-size: 25px;
+            font-weight: bold;
+            color: #2c2119;
+        }
+
+        .precio-anterior {
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-size: 14px;
+        }
+
+        .datos {
+            color: #6d625a;
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 12px 0;
+        }
+
+        .botones {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-detalles {
+            background: #2b1e15;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+        }
+
+
+        /* =========================
+           PROMOCIÓN
+        ========================= */
+
+        .promo {
+            background:
+                linear-gradient(
+                    rgba(40,25,15,.85),
+                    rgba(40,25,15,.85)
+                ),
+                url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6")
+                center / cover;
+
+            color: white;
+            text-align: center;
+        }
+
+        .promo h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .promo p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           NOSOTROS
+        ========================= */
+
+        .nosotros {
+            background: #2b1e15;
+            color: white;
+            text-align: center;
+        }
+
+        .nosotros p {
+            max-width: 850px;
+            margin: auto;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           COMPARACIÓN
+        ========================= */
+
+        .tabla-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #2b1e15;
+            color: white;
+        }
+
+        .precio-pino {
+            color: #a06d35;
+            font-weight: bold;
+        }
+
+        .precio-mercado {
+            color: #555;
+        }
+
+        .nota {
+            margin-top: 15px;
+            color: #777;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           CONTACTO
+        ========================= */
+
+        .contacto {
+            text-align: center;
+        }
+
+        .contacto p {
+            margin: 12px;
+            font-size: 18px;
+        }
+
+        .contacto-botones {
+            margin-top: 25px;
+        }
+
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+            z-index: 2000;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0,0,0,.7);
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .cerrar {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            line-height: 1.7;
+            margin: 10px 0;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #160d08;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                text-align: center;
+            }
+
+            nav a {
+                margin: 5px;
+                display: inline-block;
+            }
+
+            .hero {
+                min-height: 550px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 55px 5%;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     MENÚ
+================================================== -->
+
+<header>
+
+    <div class="logo">
+        EL PINO
+    </div>
+
+    <nav>
+
+        <a href="#inicio">Inicio</a>
+
+        <a href="#catalogo">Catálogo</a>
+
+        <a href="#ofertas">Ofertas</a>
+
+        <a href="#comparacion">Precios</a>
+
+        <a href="#nosotros">Nosotros</a>
+
+        <a href="#contacto">Contacto</a>
+
+    </nav>
+
+</header>
+
+
+<!-- ==================================================
+     PORTADA
+================================================== -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <span>MUEBLES EL PINO</span>
+
+        <h1>
+            Diseñamos espacios que se sienten como hogar.
+        </h1>
+
+        <p>
+            Muebles modernos, elegantes y fabricados
+            pensando en la comodidad de tu familia.
+        </p>
+
+        <a href="#catalogo" class="btn">
+            Ver catálogo
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     CATÁLOGO
+================================================== -->
+
+<section id="catalogo">
+
+    <h2 class="section-title">
+        Nuestro catálogo
+    </h2>
+
+    <p class="section-subtitle">
+        Encuentra el mueble perfecto para tu espacio.
+    </p>
+
+
+    <!-- BUSCADOR -->
+
+    <div class="buscador">
+
+        <input
+            type="text"
+            id="busqueda"
+            placeholder="🔎 Buscar sala, recámara, comedor..."
+            onkeyup="buscarProductos()">
+
+    </div>
+
+
+    <!-- CATEGORÍAS -->
+
+    <div class="categorias">
+
+        <button
+            class="categoria activa"
+            onclick="filtrar('todos', this)">
+            Todos
+        </button>
+
+        <button
+            class="categoria"
+            onclick="filtrar('sala', this)">
+            🛋️ Salas
+        </button>
+
+        <button
+            class="categoria"
+            onclick="filtrar('recamara', this)">
+            🛏️ Recámaras
+        </button>
+
+        <button
+            class="categoria"
+            onclick="filtrar('comedor', this)">
+            🍽️ Comedores
+        </button>
+
+        <button
+            class="categoria"
+            onclick="filtrar('mesa', this)">
+            🪑 Mesas
+        </button>
+
+        <button
+            class="categoria"
+            onclick="filtrar('closet', this)">
+            🚪 Closets
+        </button>
+
+        <button
+            class="categoria"
+            onclick="filtrar('tv', this)">
+            📺 Muebles de TV
+        </button>
+
+    </div>
+
+
+    <!-- PRODUCTOS -->
+
+    <div class="productos" id="productos">
+
+
+        <!-- PRODUCTO 1 -->
+
+        <div class="producto"
+             data-categoria="sala"
+             data-nombre="Sala Moderna Roma">
+
+            <div class="producto-img">
+
+                <img
+                    src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc"
+                    alt="Sala Moderna Roma">
+
+                <span class="oferta">
+                    OFERTA
+                </span>
+
+            </div>
+
+            <div class="producto-info">
+
+                <span class="categoria-texto">
+                    SALA
+                </span>
+
+                <h3>
+                    Sala Moderna Roma
+                </h3>
+
+                <div class="estrellas">
+                    ★★★★★
+                </div>
+
+                <div class="precio">
+                    $12,999
+                    <span class="precio-anterior">
+                        $15,499
+                    </span>
+                </div>
+
+                <div class="datos">
+                    🪵 Madera y tela premium<br>
+                    📏 220 cm de ancho<br>
+                    🎨 Gris / Beige<br>
+                    📦 Disponible
+                </div>
+
+                <div class="botones">
+
+                    <button
+                        class="btn btn-detalles"
+                        onclick="mostrarDetalle(
+                        'Sala Moderna Roma',
+                        '$12,999',
+                        'Sala de 3 plazas con estructura resistente, tapizado premium y diseño moderno.',
+                        '220 cm x 90 cm x 85 cm',
+                        'Madera + tela premium',
+                        'Gris / Beige'
+                        )">
+                        Ver detalles
+                    </button>
+
+                    <a
+                        class="btn btn-whatsapp"
+                        href="https://wa.me/5210000000000"
+                        target="_blank">
+                        Cotizar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 2 -->
+
+        <div class="producto"
+             data-categoria="sala"
+             data-nombre="Sala Premium Milano">
+
+            <div class="producto-img">
+
+                <img
+                    src="https://images.unsplash.com/photo-1550254478-ead40cc54513"
+                    alt="Sala Premium">
+
+            </div>
+
+            <div class="producto-info">
+
+                <span class="categoria-texto">
+                    SALA
+                </span>
+
+                <h3>
+                    Sala Premium Milano
+                </h3>
+
+                <div class="estrellas">
+                    ★★★★★
+                </div>
+
+                <div class="precio">
+                    $18,499
+                </div>
+
+                <div class="datos">
+                    🪵 Madera de pino<br>
+                    📏 250 cm de ancho<br>
+                    🎨 Gris oscuro<br>
+                    📦 Disponible
+                </div>
+
+                <div class="botones">
+
+                    <button
+                        class="btn btn-detalles"
+                        onclick="mostrarDetalle(
+                        'Sala Premium Milano',
+                        '$18,499',
+                        'Sala amplia de estilo elegante para espacios grandes.',
+                        '250 cm x 95 cm x 85 cm',
+                        'Madera de pino + tela',
+                        'Gris oscuro'
+                        )">
+                        Ver detalles
+                    </button>
+
+                    <a
+                        class="btn btn-whatsapp"
+                        href="https://wa.me/5210000000000"
+                        target="_blank">
+                        Cotizar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 3 -->
+
+        <div class="producto"
+             data-categoria="recamara"
+             data-nombre="Recámara Roble">
+
+            <div class="producto-img">
+
+                <img
+                    src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
+                    alt="Recámara Roble">
+
+            </div>
+
+            <div class="producto-info">
+
+                <span class="categoria-texto">
+                    RECÁMARA
+                </span>
+
+                <h3>
+                    Recámara Roble
+                </h3>
+
+                <div class="estrellas">
+                    ★★★★★
+                </div>
+
+                <div class="precio">
+                    $18,999
+                </div>
+
+                <div class="datos">
+                    🪵 Madera de pino<br>
+                    📏 Matrimonial<br>
+                    🎨 Roble natural<br>
+                    📦 Disponible
+                </div>
+
+                <div class="botones">
+
+                    <button
+                        class="btn btn-detalles"
+                        onclick="mostrarDetalle(
+                        'Recámara Roble',
+                        '$18,999',
+                        'Recámara completa con cabecera y burós.',
+                        'Cama matrimonial',
+                        'Madera de pino',
+                        'Roble natural'
+                        )">
+                        Ver detalles
+                    </button>
+
+                    <a
+                        class="btn btn-whatsapp"
+                        href="https://wa.me/5210000000000"
+                        target="_blank">
+                        Cotizar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 4 -->
+
+        <div class="producto"
+             data-categoria="recamara"
+             data-nombre="Recámara Moderna Verona">
+
+            <div class="producto-img">
+
+                <img
+                    src="https://images.unsplash.com/photo-1617325247661-675ab4b64ae2"
+                    alt="Recámara moderna">
+
+            </div>
+
+            <div class="producto-info">
+
+                <span class="categoria-texto">
+                    RECÁMARA
+                </span>
+
+                <h3>
+                    Recámara Verona
+                </h3>
+
+                <div class="estrellas">
+                    ★★★★☆
+                </div>
+
+                <div class="precio">
+                    $21,499
+                </div>
+
+                <div class="datos">
+                    🪵 Madera + MDF<br>
+                    📏 King Size<br>
+                    🎨 Café oscuro<br>
+                    📦 Disponible
+                </div>
+
+                <div class="botones">
+
+                    <button
+                        class="btn btn-detalles"
+                        onclick="mostrarDetalle(
+                        'Recámara Verona',
+                        '$21,499',
+                        'Diseño moderno con cabecera amplia y acabados elegantes.',
+                        'King Size',
+                        'Madera + MDF',
+                        'Café oscuro'
+                        )">
+                        Ver detalles
+                    </button>
+
+                    <a
+                        class="btn btn-whatsapp"
+                        href="https://wa.me/5210000000000"
+                        target="_blank">
+                        Cotizar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 5 -->
+
+        <div class="producto"
+             data-categoria="comedor"
+             data-nombre="Comedor Familiar">
+
+            <div class="producto-img">
+
+                <img
+                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace"
+                    alt="Comedor">
+
+            </div>
+
+            <div class="producto-info">
+
+                <span class="categoria-texto">
+                    COMEDOR
+                </span>
+
+                <h3>
+                    Comedor Familiar
+                </h3>
+
+                <div class="estrellas">
+                    ★★★★★
+                </div>
+
+                <div class="precio">
+                    $14,999
+                </div>
+
+                <div class="datos">
+                    🪵 Madera de pino<br>
+                    🪑 6 sillas<br>
+                    🎨 Natural<br>
+                    📦 Disponible
+                </div>
+
+                <div class="botones">
+
+                    <button
+                        class="btn btn-detalles"
+                        onclick="mostrarDetalle(
+                        'Comedor Familiar',
+                        '$14,999',
+                        'Comedor de 6 plazas ideal para reuniones familiares.',
+                        '180 cm x 90 cm',
+                        'Madera de pino',
+                        'Natural'
+                        )">
+                        Ver detalles
+                    </button>
+
+                    <a
+                        class="btn btn-whatsapp"
+                        href="https://wa.me/5210000000000"
+                        target="_blank">
+                        Cotizar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 6 -->
+
+        <div class="producto"
+             data-categoria="mesa"
+             data-nombre="Mesa Oslo">
+
+            <div class="producto-img">
+
+                <img
+                    src="https://images.unsplash.com/photo-1604578762246-41134e37f9cc"
+                    alt="Mesa Oslo">
+
+            </div>
+
+            <div class="producto-info">
+
+                <span class="categoria-texto">
+                    MESA
+                </span>
+
+                <h3>
+                    Mesa Oslo
+                </h3>
+
+                <div class="estrellas">
+                    ★★★★☆
+                </div>
+
+                <div class="precio">
+                    $6,499
+                </div>
+
+                <div class="datos">
+                    🪵 Pino macizo<br>
+                    📏 160 cm<br>
+                    🎨 Natural<br>
+                    📦 Disponible
+                </div>
+
+                <div class="botones">
+
+                    <button
+                        class="btn btn-detalles"
+                        onclick="mostrarDetalle(
+                        'Mesa Oslo',
+                        '$6,499',
+                        'Mesa de comedor de diseño moderno y resistente.',
+                        '160 cm x 90 cm x 75 cm',
+                        'Pino macizo',
+                        'Natural'
+                        )">
+                        Ver detalles
+                    </button>
+
+                    <a
+                        class="btn btn-whatsapp"
+                        href="https://wa.me/5210000000000"
+                        target="_blank">
+                        Cotizar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 7 -->
+
+        <div class="producto"
+             data-categoria="closet"
+             data-nombre="Closet Verona">
+
+            <div class="producto-img">
+
+                <img
+                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace"
+                    alt="Closet">
+
+            </div>
+
+            <div class="producto-info">
+
+                <span class="categoria-texto">
+                    CLOSET
+                </span>
+
+                <h3>
+                    Closet Verona
+                </h3>
+
+                <div class="estrellas">
+                    ★★★★★
+                </div>
+
+                <div class="precio">
+                    $16,999
+                </div>
+
+                <div class="datos">
+                    🪵 MDF + madera<br>
+                    📏 240 cm alto<br>
+                    🎨 Nogal<br>
+                    📦 Sobre pedido
+                </div>
+
+                <div class="botones">
+
+                    <button
+                        class="btn btn-detalles"
+                        onclick="mostrarDetalle(
+                        'Closet Verona',
+                        '$16,999',
+                        'Closet amplio con espacios para ropa, zapatos y accesorios.',
+                        '240 x 200 x 60 cm',
+                        'MDF + madera',
+                        'Nogal'
+                        )">
+                        Ver detalles
+                    </button>
+
+                    <a
+                        class="btn btn-whatsapp"
+                        href="https://wa.me/5210000000000"
+                        target="_blank">
+                        Cotizar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 8 -->
+
+        <div class="producto"
+             data-categoria="tv"
+             data-nombre="Mueble TV Elegance">
+
+            <div class="producto-img">
+
+                <img
+                    src="https://images.unsplash.com/photo-1593784991095-a205069470b6"
+                    alt="Mueble de TV">
+
+            </div>
+
+            <div class="producto-info">
+
+                <span class="categoria-texto">
+                    MUEBLE DE TV
+                </span>
+
+                <h3>
+                    Mueble TV Elegance
+                </h3>
+
+                <div class="estrellas">
+                    ★★★★★
+                </div>
+
+                <div class="precio">
+                    $7,499
+                </div>
+
+                <div class="datos">
+                    🪵 MDF laminado<br>
+                    📏 180 cm<br>
+                    🎨 Nogal / Negro<br>
+                    📦 Disponible
+                </div>
+
+                <div class="botones">
+
+                    <button
+                        class="btn btn-detalles"
+                        onclick="mostrarDetalle(
+                        'Mueble TV Elegance',
+                        '$7,499',
+                        'Mueble moderno para televisión con espacios de almacenamiento.',
+                        '180 x 45 x 50 cm',
+                        'MDF laminado',
+                        'Nogal / Negro'
+                        )">
+                        Ver detalles
+                    </button>
+
+                    <a
+                        class="btn btn-whatsapp"
+                        href="https://wa.me/5210000000000"
+                        target="_blank">
+                        Cotizar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     PROMOCIONES
+================================================== -->
+
+<section class="promo" id="ofertas">
+
+    <h2>
+        🔥 Promociones de temporada
+    </h2>
+
+    <p>
+        Aprovecha descuentos especiales en muebles seleccionados.
+    </p>
+
+    <a
+        href="#catalogo"
+        class="btn">
+        Ver ofertas
+    </a>
+
+</section>
+
+
+<!-- ==================================================
+     COMPARACIÓN DE PRECIOS
+================================================== -->
+
+<section id="comparacion">
+
+    <h2 class="section-title">
+        Comparación de precios
+    </h2>
+
+    <p class="section-subtitle">
+        Referencias de precios del mercado para ayudarte a comparar.
+    </p>
+
+
+    <div class="tabla-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Producto
+                    </th>
+
+                    <th>
+                        Precio El Pino
+                    </th>
+
+                    <th>
+                        Referencia mercado
+                    </th>
+
+                    <th>
+                        Diferencia
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        Sofá 2 plazas
+                    </td>
+
+                    <td class="precio-pino">
+                        $8,499
+                    </td>
+
+                    <td class="precio-mercado">
+                        $8,999
+                    </td>
+
+                    <td>
+                        $500 menos
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Sofá 3 plazas
+                    </td>
+
+                    <td class="precio-pino">
+                        $9,499
+                    </td>
+
+                    <td class="precio-mercado">
+                        $9,999
+                    </td>
+
+                    <td>
+                        $500 menos
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Comedor + 4 sillas
+                    </td>
+
+                    <td class="precio-pino">
+                        $9,999
+                    </td>
+
+                    <td class="precio-mercado">
+                        $2,895*
+                    </td>
+
+                    <td>
+                        Comparar características
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Mueble de TV
+                    </td>
+
+                    <td class="precio-pino">
+                        $7,499
+                    </td>
+
+                    <td class="precio-mercado">
+                        $4,999*
+                    </td>
+
+                    <td>
+                        Comparar características
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <p class="nota">
+        * Los precios externos son referencias y pueden cambiar.
+        No representan necesariamente productos equivalentes.
+        Verifica siempre el precio y características antes de publicar.
+    </p>
+
+</section>
+
+
+<!-- ==================================================
+     NOSOTROS
+================================================== -->
+
+<section class="nosotros" id="nosotros">
+
+    <h2 class="section-title">
+        Muebles El Pino
+    </h2>
+
+    <p>
+
+        Somos una empresa dedicada a la fabricación de muebles
+        para hogares y negocios.
+
+        Combinamos diseño, funcionalidad y buenos materiales
+        para crear muebles que se adapten a cada espacio.
+
+        Nuestro objetivo es ofrecer productos con excelentes
+        acabados y atención personalizada.
+
+    </p>
+
+</section>
+
+
+<!-- ==================================================
+     CONTACTO
+================================================== -->
+
+<section class="contacto" id="contacto">
+
+    <h2 class="section-title">
+        ¿Quieres cotizar?
+    </h2>
+
+    <p>
+        📞 Teléfono: 5517555941
+    </p>
+
+    <p>
+        📍 México:ciudad de mexico
+    </p>
+
+    <p>
+        📧 contacto:zaidg5761@gmail.com
+    </p>
+
+    <div class="contacto-botones">
+
+        <a
+            class="btn btn-whatsapp"
+            href="https://wa.me/5517555941"
+            target="_blank">
+
+            💬 Cotizar por WhatsApp
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     MODAL
+================================================== -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <span
+            class="cerrar"
+            onclick="cerrarModal()">
+            ×
+        </span>
+
+        <h2 id="modalNombre">
+            Producto
+        </h2>
+
+        <p id="modalDescripcion">
+        </p>
+
+        <p>
+            💰 <strong>Precio:</strong>
+            <span id="modalPrecio"></span>
+        </p>
+
+        <p>
+            📏 <strong>Medidas:</strong>
+            <span id="modalMedidas"></span>
+        </p>
+
+        <p>
+            🪵 <strong>Material:</strong>
+            <span id="modalMaterial"></span>
+        </p>
+
+        <p>
+            🎨 <strong>Color:</strong>
+            <span id="modalColor"></span>
+        </p>
+
+        <br>
+
+        <a
+            class="btn btn-whatsapp"
+            href="https://wa.me/5210000000000"
+            target="_blank">
+
+            Solicitar cotización
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+    <p>
+        © 2026 Muebles El Pino
+    </p>
+
+    <br>
+
+    <p>
+        Calidad • Diseño • Comodidad
+    </p>
+
+</footer>
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+    /* =========================
+       FILTRAR CATEGORÍAS
+    ========================= */
+
+    function filtrar(categoria, boton) {
+
+        const productos =
+            document.querySelectorAll(".producto");
+
+        const botones =
+            document.querySelectorAll(".categoria");
+
+
+        botones.forEach(function(btn) {
+
+            btn.classList.remove("activa");
+
+        });
+
+
+        boton.classList.add("activa");
+
+
+        productos.forEach(function(producto) {
+
+            if (
+                categoria === "todos" ||
+                producto.dataset.categoria === categoria
+            ) {
+
+                producto.style.display = "block";
+
+            } else {
+
+                producto.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* =========================
+       BUSCADOR
+    ========================= */
+
+    function buscarProductos() {
+
+        const texto =
+            document
+            .getElementById("busqueda")
+            .value
+            .toLowerCase();
+
+
+        const productos =
+            document.querySelectorAll(".producto");
+
+
+        productos.forEach(function(producto) {
+
+            const nombre =
+                producto.dataset.nombre
+                .toLowerCase();
+
+
+            if (nombre.includes(texto)) {
+
+                producto.style.display = "block";
+
+            } else {
+
+                producto.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* =========================
+       ABRIR DETALLES
+    ========================= */
+
+    function mostrarDetalle(
+        nombre,
+        precio,
+        descripcion,
+        medidas,
+        material,
+        color
+    ) {
+
+        document.getElementById("modalNombre")
+            .textContent = nombre;
+
+        document.getElementById("modalPrecio")
+            .textContent = precio;
+
+        document.getElementById("modalDescripcion")
+            .textContent = descripcion;
+
+        document.getElementById("modalMedidas")
+            .textContent = medidas;
+
+        document.getElementById("modalMaterial")
+            .textContent = material;
+
+        document.getElementById("modalColor")
+            .textContent = color;
+
+
+        document.getElementById("modal")
+            .style.display = "flex";
+
+    }
+
+
+    /* =========================
+       CERRAR MODAL
+    ========================= */
+
+    function cerrarModal() {
+
+        document.getElementById("modal")
+            .style.display = "none";
+
+    }
+
+
+    /* CERRAR AL HACER CLICK AFUERA */
+
+    window.onclick = function(event) {
+
+        const modal =
+            document.getElementById("modal");
+
+        if (event.target === modal) {
+
+            modal.style.display = "none";
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+
+</html>>
